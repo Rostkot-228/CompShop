@@ -1,8 +1,6 @@
 ﻿using System.Reflection;
 using WebPortal.DbStuff.Repositories;
 using WebPortal.DbStuff.Repositories.Interfaces;
-using WebPortal.DbStuff.Repositories.Interfaces.Notes;
-using WebPortal.DbStuff.Repositories.Notes;
 
 namespace WebPortal.Services.AutoRegistrationInDI
 {
@@ -36,32 +34,6 @@ namespace WebPortal.Services.AutoRegistrationInDI
             }
         }
 
-        public void RegisterAllNotesRepositories(IServiceCollection services)
-        {
-            var baseDbRepository = typeof(BaseDbRepository<>);
-            var assembly = Assembly.GetAssembly(baseDbRepository);
-
-            var classNotesRepositories = assembly
-                .GetTypes()
-                .Where(x => x.BaseType != null 
-                            && x.BaseType.IsGenericType 
-                            && x.BaseType.GetGenericTypeDefinition() == baseDbRepository)
-                .ToList();
-            
-            var interfaceNotesRepositories = assembly
-                .GetTypes()
-                .Where(x => x.IsInterface 
-                            && x.GetInterfaces()
-                                .Any(i => i.IsGenericType 
-                                          && i.GetGenericTypeDefinition() == typeof(IBaseDbRepository<>)));
-
-            foreach (var interfaceNotesRepository in interfaceNotesRepositories)
-            {
-                var classNotesRepository = classNotesRepositories
-                    .First(classRepo => classRepo.GetInterfaces().Contains(interfaceNotesRepository));
-                services.AddScoped(interfaceNotesRepository, classNotesRepository);
-            }
-        }
 
         public void RegisterAllByAttribute(IServiceCollection di)
         {

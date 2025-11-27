@@ -1,8 +1,6 @@
 ﻿using WebPortal.DbStuff.Models;
 using WebPortal.DbStuff.Models.CompShop;
 using WebPortal.DbStuff.Models.CompShop.Devices;
-using WebPortal.DbStuff.Models.Marketplace;
-using WebPortal.DbStuff.Models.Tourism;
 using WebPortal.DbStuff.Repositories.CompShop;
 using WebPortal.DbStuff.Repositories.Interfaces;
 
@@ -10,12 +8,9 @@ namespace WebPortal.DbStuff
 {
     public class SeedService
     {
-        private IAnimeRepository _animeRepository;
-        private IGirlRepository _girlRepository;
-        private IUserRepositrory _userRepositrory;
-
-        //Tourism
-        private IToursRepository _toursRepository;
+        private readonly IAnimeRepository _animeRepository;
+        private readonly IGirlRepository _girlRepository;
+        private readonly IUserRepositrory _userRepositrory;
 
         //CompShop
         private readonly ICategoryRepository _categoryRepository;
@@ -27,8 +22,7 @@ namespace WebPortal.DbStuff
             IGirlRepository girlRepository,
             IUserRepositrory userRepositrory,
             ICategoryRepository categoryRepository,
-            ITypeDeviceRepository typeDeviceRepository,
-            IToursRepository toursRepository)
+            ITypeDeviceRepository typeDeviceRepository)
         {
             _animeRepository = animeRepository;
             _girlRepository = girlRepository;
@@ -37,7 +31,6 @@ namespace WebPortal.DbStuff
             //CompShop
             _categoryRepository = categoryRepository;
             _typeDeviceRepository = typeDeviceRepository;
-            _toursRepository = toursRepository;
         }
 
         public void Seed()
@@ -49,9 +42,6 @@ namespace WebPortal.DbStuff
             //CompShop
             FillCategories();
             FillTypeDevice();
-
-            //Tourism
-            FillTours();
         }
 
         private void FillCategories()
@@ -202,32 +192,6 @@ namespace WebPortal.DbStuff
                 ReleasDate = DateTime.Now.AddYears(-5),
             };
             _animeRepository.Add(eva);
-        }
-        private void FillTours() 
-        {
-            if (_toursRepository.Any())
-            {
-                return ;
-            }
-            var admin = _userRepositrory.GetByName(ADMIN_NAME);
-            var tours = new List<Tours>{
-            new Tours
-            {
-                TourName = "Tour to Vitebsk",
-                TourImgUrl = "https://34travel.me/media/posts/5f5633dd2d2dc-vitebsk940.jpg",
-                Author = admin,
-                CreatedDate = DateTime.Now
-            },
-
-            new Tours
-            {
-                TourName = "Tour to Grodno",
-                TourImgUrl = "https://34travel.me/media/posts/5f50a0c8afab4-hrodna-pan940.jpg",
-                Author = admin,
-                CreatedDate = DateTime.Now
-            }
-            };
-            _toursRepository.AddRange(tours);
         }
     }
 }

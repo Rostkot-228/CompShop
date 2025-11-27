@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using WebPortal.DbStuff.Models.CompShop;
-using WebPortal.DbStuff.Models.CompShop.Devices;
-using WebPortal.DbStuff.Models.Marketplace;
-using WebPortal.Models.CompShop.Device;
+﻿using WebPortal.Models.CompShop.Device;
 
 namespace WebPortal.Models.CompShop
 {
@@ -14,7 +10,7 @@ namespace WebPortal.Models.CompShop
         public ComputerViewModel? ComputerViewModel { get; set; }
 
         /*public int LaptopId { get; set; }
-        public LaptopViewModel? TypeDevice { get; set; } И так далее */
+        public LaptopViewModel? LaptopViewModel { get; set; } И так далее */
 
     }
 }

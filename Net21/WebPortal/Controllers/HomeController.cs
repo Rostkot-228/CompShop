@@ -67,17 +67,6 @@ namespace WebPortal.Controllers
             return View();
         }
 
-        public IActionResult Smile(int age, string name, bool isRed)
-        {
-            var yearOfBirthday = DateTime.Now.Year - age;
-
-            var viewModel = new SmileViewModel();
-            viewModel.Name = name +
-                (isRed ? " soulless" : "");
-            viewModel.YearOfBirthday = yearOfBirthday;
-            return View(viewModel);
-        }
-
         public IActionResult CallRequest()
         {
             return View(); // Ищет Views/Home/CallRequest.cshtml
