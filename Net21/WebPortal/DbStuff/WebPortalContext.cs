@@ -13,8 +13,6 @@ namespace WebPortal.DbStuff
             : base(options) { }
 
         public DbSet<User> Users { get; set; }
-        public DbSet<Girl> Girls { get; set; }
-        public DbSet<Anime> Animes { get; set; }
 
 
         /* CompShop */
@@ -30,27 +28,6 @@ namespace WebPortal.DbStuff
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .Entity<User>()
-                .HasMany(user => user.FavoriteGirls)
-                .WithMany(girl => girl.UserWhoAddToFavorite);
-
-            modelBuilder
-                .Entity<User>()
-                .HasMany(user => user.CreatedGirls)
-                .WithOne(girl => girl.Author)
-                .OnDelete(DeleteBehavior.NoAction);
-
-
-            modelBuilder
-                .Entity<Computer>()
-                .HasOne(comp => comp.Device)
-                .WithOne(device => device.Computer);
-
-            modelBuilder.Entity<Girl>().HasMany(x => x.Animes).WithMany(x => x.Characters);
-
-            modelBuilder.Entity<Girl>().HasMany(x => x.Festivals).WithMany(x => x.Girls);
-
-            modelBuilder
                 .Entity<Notification>()
                 .HasOne(x => x.Author)
                 .WithMany(x => x.NotificationCreatedByMe)
@@ -61,8 +38,6 @@ namespace WebPortal.DbStuff
                 .WithMany(x => x.ViewedNotification);
 
             base.OnModelCreating(modelBuilder);
-
-            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
     }
 }

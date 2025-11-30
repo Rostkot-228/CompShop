@@ -219,7 +219,7 @@ namespace WebPortal.Controllers
 
             deviceDB.CategoryEnum = GetCategoryEnum(deviceDB.Category.Name!);
 
-            switch (deviceDB.CategoryEnum)
+            /*switch (deviceDB.CategoryEnum)
             {
                 case CategoryEnum.Computer:
                     var comp = model.ComputerViewModel!;
@@ -245,12 +245,12 @@ namespace WebPortal.Controllers
                         Motherboard = comp.Motherboard,
                         PowerUnit = comp.PowerUnit,
                         DeviceId = device.Id,
-                    }; И так далее */
+                    }; И так далее 
                     break;
 
                 default:
                     throw new Exception("Данной катекогии не существует в CategoryEnum.");
-            }
+            }*/
 
             _deviceRepository.Add(deviceDB);
 

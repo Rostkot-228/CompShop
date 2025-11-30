@@ -1,5 +1,4 @@
-﻿using WebPortal.DbStuff.DataModels;
-using WebPortal.DbStuff.Models;
+﻿using WebPortal.DbStuff.Models;
 
 namespace WebPortal.DbStuff.Repositories.Interfaces
 {
@@ -10,7 +9,5 @@ namespace WebPortal.DbStuff.Repositories.Interfaces
         void Registration(string userName, string password);
 
         User? GetFirstByName(string userName);
-
-        List<AuthorStatisticForAnimeModel> GetAuthorStatisticForAnime();
     }
 }

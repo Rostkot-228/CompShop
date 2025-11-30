@@ -68,26 +68,6 @@ namespace WebPortal.Controllers
         }
 
         [Authorize]
-        public IActionResult Profile()
-        {
-            var viewModel = new ProfileViewModel();
-
-            viewModel.Name = _authService.GetName();
-            viewModel.Languages = System
-                .Enum
-                .GetValues<Language>()
-                .ToList();
-            viewModel.Language = _authService.GetLanguage();
-            var userId = _authService.GetId();
-            viewModel.AvatarUrl = $"/images/avatars/{userId}.jpg";
-            viewModel.Role = _authService.GetRole();
-
-            viewModel.AuthorStatisticForAnime = _userRepositrory.GetAuthorStatisticForAnime();
-
-            return View(viewModel);
-        }
-
-        [Authorize]
         public IActionResult ChangeLanguage(Language lang)
         {
             var user = _authService.GetUser();

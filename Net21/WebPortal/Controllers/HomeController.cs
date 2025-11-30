@@ -11,14 +11,12 @@ namespace WebPortal.Controllers
     public class HomeController : Controller
     {
         private IAuthService _authService;
-        private SuperService _superService;
         private WeatherApi _weatherApi;
         private JokeApi _jokeApi;
 
-        public HomeController(IAuthService authService, SuperService superService, WeatherApi weatherApi, JokeApi jokeApi)
+        public HomeController(IAuthService authService, WeatherApi weatherApi, JokeApi jokeApi)
         {
             _authService = authService;
-            _superService = superService;
             _weatherApi = weatherApi;
             _jokeApi = jokeApi;
         }

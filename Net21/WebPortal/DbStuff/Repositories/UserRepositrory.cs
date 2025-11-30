@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WebPortal.DbStuff.DataModels;
 using WebPortal.DbStuff.Models;
 using WebPortal.DbStuff.Repositories.Interfaces;
 
@@ -21,7 +20,7 @@ namespace WebPortal.DbStuff.Repositories
             throw new Exception("DO NOT USER Add. User Registration method");
         }
 
-        public List<AuthorStatisticForAnimeModel> GetAuthorStatisticForAnime()
+        /*public List<AuthorStatisticForAnimeModel> GetAuthorStatisticForAnime()
         {
             FormattableString fs = @$"SELECT 
 	U.UserName AuthorName,  
@@ -36,7 +35,7 @@ GROUP BY U.UserName, A.Name";
                 .SqlQuery<AuthorStatisticForAnimeModel>(fs)
                 .ToList();
             return response;
-        }
+        }*/
 
         public User? GetByName(string name)
         {

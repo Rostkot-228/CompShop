@@ -12,9 +12,6 @@ namespace WebPortal.DbStuff.Models
         public Role Role { get; set; }
         public Language Language { get; set; }
 
-        public virtual List<Girl> CreatedGirls { get; set; } = new List<Girl>();
-        public virtual List<Girl> FavoriteGirls { get; set; } = new List<Girl>();
-
         public virtual List<Notification> NotificationCreatedByMe { get; set; } = new List<Notification>();
         public virtual List<Notification> ViewedNotification { get; set; } = new List<Notification>();
     }

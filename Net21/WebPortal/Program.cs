@@ -45,12 +45,6 @@ builder.Services.AddScoped<ISourcePDFService, SourcePDFService>();
 builder.Services.AddScoped<ICompShopFileService, CompShopFileService>(); 
 builder.Services.AddScoped<ICompShopPermission, CompShopPermission>();
 
-builder.Services.AddScoped<IGirlPermission, GirlPermission>();
-
-builder.Services.AddHttpClient<WaifuApi>(x=>
-{
-    x.BaseAddress = new Uri("https://api.waifu.im");
-});
 
 builder.Services.AddHttpClient<WeatherApi>(x=>
 {
@@ -65,17 +59,6 @@ builder.Services.AddHttpClient<JokeApi>(x=>
 builder.Services.AddHttpClient<CatsApi>(x =>
 {
     x.BaseAddress = new Uri("https://cataas.com");
-});
-
-builder.Services.AddHttpClient<IssApi>(client =>
-{
-    client.BaseAddress = new Uri("https://api.wheretheiss.at/");
-});
-
-builder.Services.AddHttpClient<WikiPageApi>(client =>
-{
-    client.BaseAddress = new Uri("https://en.wikipedia.org/");
-    client.DefaultRequestHeaders.Add("User-Agent", "WebPortalApp/1.0");
 });
 
 var authResolver = new AutoRegisterService();

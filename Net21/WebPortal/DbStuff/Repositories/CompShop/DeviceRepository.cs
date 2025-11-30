@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WebPortal.DbStuff.DataModels;
 using WebPortal.DbStuff.Models.CompShop.Devices;
 using WebPortal.DbStuff.Repositories.Interfaces.CompShop;
 
