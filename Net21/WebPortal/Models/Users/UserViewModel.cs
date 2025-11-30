@@ -9,5 +9,6 @@ namespace WebPortal.Models.Users
         public string AvatarUrl { get; set; }
         public int Money { get; set; }
         public Role Role { get; set; }
+        public Language Language { get; set; }
     }
 }

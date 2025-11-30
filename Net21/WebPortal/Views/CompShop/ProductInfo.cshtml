@@ -1,12 +1,56 @@
 ﻿@using WebPortal.Models.CompShop
+@using WebPortal.Models.CompShop.Device
+
 @{
     Layout = "_LayoutCompShop";
 }
 
-@model ProductInfoViewModel
+@section StyleCompShop {
+    <link rel="stylesheet" href="~/css/CompShop/product.css" />
+}
 
-<body>
-   
-</body>
+@model DeviceViewModel
+
+<div class="product-page">
+    <div class="product-card">
+        <div class="product-image">
+            <img src="@Model.ImagePath" alt="@Model.Name" />
+        </div>
+        <div class="product-details">
+            <h1 class="product-name">@Model.Name</h1>
+            @if (Model.Category != null)
+            {
+                <div class="product-category">
+                    <span class="badge">@Model.Category.Name</span>
+                </div>
+            }
+            @if (Model.TypeDevice != null)
+            {
+                <p class="product-type"><strong>Тип устройства:</strong> @Model.TypeDevice.Name</p>
+            }
+            <div class="product-description">
+                <h3>Описание</h3>
+                <p>@Model.Description</p>
+            </div>
+            <div class="product-price">
+                <span class="price-value">@Model.Price.ToString("F2") BYN</span>
+            </div>
+
+            @if (Model.CanDelete)
+            {
+                <div class="product-actions">
+                    <a href="/compshop/add-to-cart?id=@Model.Id" class="btn btn-primary">В корзину</a>
+                    <a href="/compshop/delete?id=@Model.Id" class="btn btn-danger">Удалить</a>
+                </div>
+            }
+            else
+            {
+                <div class="product-actions">
+                    <a href="/compshop/add-to-cart?id=@Model.Id" class="btn btn-primary">В корзину</a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
 
 

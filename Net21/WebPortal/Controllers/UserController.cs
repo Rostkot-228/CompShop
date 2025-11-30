@@ -14,6 +14,7 @@ using WebPortal.Services;
 
 namespace WebPortal.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
         private IUserRepositrory _userRepositrory;
@@ -33,6 +34,7 @@ namespace WebPortal.Controllers
             _notificationRepository = notificationRepository;
         }
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
             var usersViewModels = _userRepositrory
@@ -48,6 +50,7 @@ namespace WebPortal.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Registration()
         {
             return View();
@@ -67,7 +70,6 @@ namespace WebPortal.Controllers
             return RedirectToAction("Index");
         }
 
-        [Authorize]
         public IActionResult ChangeLanguage(Language lang)
         {
             var user = _authService.GetUser();
@@ -76,7 +78,7 @@ namespace WebPortal.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [Authorize]
+        
         public IActionResult CompShopProfil()
         {
             var userDb = _authService.GetUser();
@@ -90,7 +92,22 @@ namespace WebPortal.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        public IActionResult UpdateLanguage(Language language)
+        {
+            if (language == 0) return NotFound();
+
+            var user = _authService.GetUser();
+
+            if (user is null) return NotFound();
+
+            user.Language = language;
+
+            _userRepositrory.Update(user);
+
+            return RedirectToAction("CompShopProfil");
+        }
+
+        [HttpPost]
         public IActionResult UpdateAvatar(IFormFile avatar)
         {
             _fileService.UploadAvatar(avatar);
@@ -118,7 +135,6 @@ namespace WebPortal.Controllers
             return RedirectToAction("AllAvatars");
         }
 
-        [Authorize]
         [Role(Role.Admin)]
         [HttpGet]
         public IActionResult SetRoleUser()
@@ -157,7 +173,6 @@ namespace WebPortal.Controllers
             return setRoleUsersViewModel;
         }
 
-        [Authorize]
         [Role(Role.Admin)]
         [HttpPost]
         public IActionResult SetRoleUser(int userId, int roleId)
@@ -181,7 +196,7 @@ namespace WebPortal.Controllers
 
             //send message
             var author = _authService.GetUser();
-            var message = $"User '{user.UserName}' became a {user.Role}"; // Как сделасть const
+            var message = $"User '{user.UserName}' became a {user.Role}"; 
 
             var notification = new Notification
             {

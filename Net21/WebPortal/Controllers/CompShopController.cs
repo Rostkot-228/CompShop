@@ -281,8 +281,6 @@ namespace WebPortal.Controllers
         public IActionResult ProductInfo(int id)
         {
             var deviceDB = _deviceRepository.GetFirstById(id);
-
-            ProductInfoViewModel productInfoViewModel = new ProductInfoViewModel();
             
             var deviceViewModel = new DeviceViewModel
             {
@@ -297,21 +295,7 @@ namespace WebPortal.Controllers
                 IsPopular = deviceDB.IsPopular,
             };
 
-            productInfoViewModel.DeviceViewModel = deviceViewModel;
-
-            deviceDB = _deviceRepository.GetDeviceWithAll(deviceDB);
-
-            productInfoViewModel.ComputerViewModel = new ComputerViewModel
-            {
-                Processor = deviceDB.Computer.Processor,
-                Ram = deviceDB.Computer.Ram,
-                Memory = deviceDB.Computer.Memory,
-                VideoCard = deviceDB.Computer.VideoCard,
-                Motherboard = deviceDB.Computer.Motherboard,
-                PowerUnit = deviceDB.Computer.PowerUnit,
-            };
-
-            return View(productInfoViewModel);
+            return View(deviceViewModel);
         }
 
         [AllowAnonymous]

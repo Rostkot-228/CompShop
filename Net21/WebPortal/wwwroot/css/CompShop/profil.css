@@ -1,0 +1,99 @@
+﻿.profile-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 16px;
+}
+
+.profile-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    padding: 32px;
+}
+
+.avatar-section {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin-bottom: 32px;
+}
+
+.avatar-preview img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #e0e0e0;
+}
+
+.avatar-upload {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn-upload, .btn-primary {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-upload {
+    background: #f0f0f0;
+    color: #444;
+    border: 1px solid #ccc;
+}
+
+    .btn-upload:hover {
+        background: #e0e0e0;
+    }
+
+.btn-primary {
+    background: #70C05B;
+    color: white;
+    border: none;
+}
+
+    .btn-primary:hover {
+        background: #2e7d32;
+    }
+
+.username {
+    font-size: 28px;
+    margin-bottom: 24px;
+    color: #222;
+    font-weight: 700;
+}
+
+.profile-field label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+}
+
+.form-select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    width: 100%;
+    max-width: 300px;
+}
+
+@media (max-width: 600px) {
+    .avatar-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .avatar-preview img {
+        margin: 0 auto;
+    }
+}

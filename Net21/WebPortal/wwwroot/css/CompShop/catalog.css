@@ -189,99 +189,98 @@
     padding: 20px 0;
 }
 
-.blocks .comp {
-    background: white;
-    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-    overflow: hidden;
-    transition: transform 300ms ease;
-}
-
-.blocks .comp:hover {
-    transform: translateY(-10px);
-}
-
-.blocks .comp img {
-    width: 100%;
-    object-fit: cover;
-    border-radius: 12px 12px 0 0;
-}
-
-.blocks .comp .info {
-    padding: 15px;
-}
-
-    .blocks .comp .info img {
-        background-size: cover;
+    .blocks .comp {
+        background: white;
+        box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        overflow: hidden;
+        transition: transform 300ms ease;
     }
 
-.blocks .comp .name {
-    font-size: 24px;
-    margin: 10px 0 5px 0;
-    color: black;
-    font-weight: 600;
-}
+        .blocks .comp:hover {
+            transform: translateY(-10px);
+        }
 
-.blocks .comp .type {
-    color: #666;
-    font-size: 18px;
-    font-style: italic;
-    margin-bottom: 10px;
-}
+        /* Задаем фиксированную высоту для блока с изображением */
+        .blocks .comp .imgDevice {
+            width: 100%;
+            height: 300px;
+            object-fit: contain; 
+            object-position: center;
+            border-radius: 12px 12px 0 0;
+        }
 
-.blocks .comp .cost {
-    padding: 10px 0;
-    font-size: 16px;
-}
+        .blocks .comp .info {
+            padding: 15px;
+        }
 
-    .blocks .comp .cost span {
-        color: #2e7d32;
-        font-weight: 700;
-        font-size: 22px;
-    }
+        .blocks .comp .name {
+            font-size: 24px;
+            margin: 10px 0 5px 0;
+            color: black;
+            font-weight: 600;
+        }
 
-    .blocks .comp .cost s {
-        color: #999;
-        margin-left: 10px;
-        font-size: 18px;
-    }
+        .blocks .comp .type {
+            color: #666;
+            font-size: 18px;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
 
-.blocks .comp .btns {
-    margin-top: 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
+        .blocks .comp .cost {
+            padding: 10px 0;
+            font-size: 16px;
+        }
 
-.blocks .comp .btn a {
-    display: block;
-    padding: 10px;
-    background: white;
-    color: #70C05B;
-    border: 1px solid #70C05B;
-    border-radius: 6px;
-    text-align: center;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 200ms ease;
-}
+            .blocks .comp .cost span {
+                color: #2e7d32;
+                font-weight: 700;
+                font-size: 22px;
+            }
 
-    .blocks .comp .btn a:hover {
-        background: #E5FFDE;
-        color: #2e7d32;
-        border-color: #2e7d32;
-    }
+            .blocks .comp .cost s {
+                color: #999;
+                margin-left: 10px;
+                font-size: 18px;
+            }
 
-.blocks .comp .delete a {
-    color: #d9534f;
-    border-color: #d9534f;
-}
+        .blocks .comp .btns {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
 
-    .blocks .comp .delete a:hover {
-        background: #f9eaea;
-        color: #c12e2a;
-        border-color: #c12e2a;
-    }
+        .blocks .comp .btn a {
+            display: block;
+            padding: 10px;
+            background: white;
+            color: #70C05B;
+            border: 1px solid #70C05B;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 200ms ease;
+        }
+
+            .blocks .comp .btn a:hover {
+                background: #E5FFDE;
+                color: #2e7d32;
+                border-color: #2e7d32;
+            }
+
+        .blocks .comp .delete a {
+            color: #d9534f;
+            border-color: #d9534f;
+        }
+
+            .blocks .comp .delete a:hover {
+                background: #f9eaea;
+                color: #c12e2a;
+                border-color: #c12e2a;
+            }
 
 .pagination {
     margin-top: 50px;

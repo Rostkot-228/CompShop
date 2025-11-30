@@ -1,4 +1,5 @@
-﻿@using WebPortal.Models.CompShop
+﻿@using WebPortal.Enum
+@using WebPortal.Models.CompShop
 @using WebPortal.Models.Users
 @{
     Layout = "_LayoutCompShop";
@@ -6,12 +7,61 @@
 
 @model UserViewModel
 
-<body>
-    <div>
-        Name: @Model.UserName
-    </div>
-   
-</body>
+@section StyleCompShop {
+    <link rel="stylesheet" href="~/css/CompShop/profil.css" />
+}
 
+<div class="profile-container">
+    <div class="profile-card">
+        <div class="avatar-section">
+            <div class="avatar-preview">
+                <img id="avatarImg" src="@Model.AvatarUrl" alt="Аватар" />
+            </div>
+            <div class="avatar-upload">
+                <label for="avatarInput" class="btn-upload">Загрузить новый аватар</label>
+                <input type="file" id="avatarInput" accept="image/*" style="display: none;" />
+                <button id="saveAvatarBtn" class="btn-primary" style="margin-top: 10px; display: none;">Сохранить аватар</button>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h2 class="username">@Model.UserName</h2>
+
+            <label>Язык интерфейса:</label>
+            <form class="profile-field" action="/User/UpdateLanguage" method="post" enctype="multipart/form-data">
+                <select id="languageSelect" name="language" class="form-select">
+                    <option value="@Language.Russian" selected="@(Model.Language == Language.Russian)">Русский</option>
+                    <option value="@Language.English" selected="@(Model.Language == Language.English)">English</option>
+                    <option value="@Language.Deutch" selected="@(Model.Language == Language.Deutch)">Deutch</option>
+                </select>
+                <button id="saveLanguageBtn" class="btn-primary" type="submit" style="margin-top: 8px;">Сохранить язык</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const avatarInput = document.getElementById('avatarInput');
+        const avatarImg = document.getElementById('avatarImg');
+        const saveAvatarBtn = document.getElementById('saveAvatarBtn');
+        const saveLanguageBtn = document.getElementById('saveLanguageBtn');
+        const languageSelect = document.getElementById('languageSelect');
+
+        // Обработка загрузки аватара
+        avatarInput.addEventListener('change', function (e) {
+            if (e.target.files && e.target.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    avatarImg.src = event.target.result;
+                    saveAvatarBtn.style.display = 'inline-block';
+                };
+                reader.readAsDataURL(e.target.files[0]);
+            }
+        });
+
+        });
+</script>
 
 
